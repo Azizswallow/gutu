@@ -1,1 +1,1 @@
-// GUTU investor pitch
+import './style.css'
