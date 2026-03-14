@@ -18,8 +18,7 @@ new_index_nav = f'''<nav>
   <div class="nav-links">
     <a href="#features">Продукт</a>
     <a href="#market">Рынок</a>
-    <a href="#market-analysis">Анализ рынка</a>
-    <a href="#financials">Финансы</a>
+    <a href="#pricing">Тарифы</a>
     <a href="#team">Команда</a>
     <a href="#invest">Инвестиции</a>
     <a href="/financials.html" style="color:var(--orange);font-weight:700">📊 Финмодель</a>
