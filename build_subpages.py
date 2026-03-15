@@ -1,6 +1,6 @@
 import re
 
-with open('index.html') as f:
+with open('index_full.html') as f:
     html = f.read()
     lines = html.splitlines(keepends=True)
 
@@ -31,22 +31,62 @@ def page_nav(active_label=''):
         ('/team.html', 'Команда'),
         ('/roadmap.html', 'Роадмап'),
         ('/invest.html', 'Инвестиции'),
-        ('/financials.html', '📊 Финмодель'),
-        ('/business-plan.html', '📋 Бизнес-план'),
+        ('/financials.html', 'Финмодель'),
+        ('/business-plan.html', 'Бизнес-план'),
     ]
-    nav_links = ''
+    menu_items = ''
     for href, label in links:
-        style = ' style="color:var(--orange);font-weight:700"' if label == active_label else ''
-        nav_links += f'    <a href="{href}"{style}>{label}</a>\n'
+        active_style = 'color:var(--orange);font-weight:700;' if label == active_label else ''
+        menu_items += f'    <a href="{href}" style="{active_style}">{label}</a>\n'
 
-    return f'''<nav>
+    return f'''<nav style="position:relative">
   <div class="nav-logo">
     <a href="/"><img src="{LOGO}" alt="GUTU"></a>
   </div>
-  <div class="nav-links">
-{nav_links}  </div>
-  <a class="nav-cta" href="/invest.html">Инвестировать</a>
-</nav>'''
+
+  <!-- Hamburger button -->
+  <button id="burger-btn" onclick="toggleMenu()" aria-label="Меню"
+    style="background:none;border:none;cursor:pointer;padding:8px;display:flex;flex-direction:column;gap:5px;margin-left:auto">
+    <span class="burger-line" style="display:block;width:26px;height:3px;background:var(--text);border-radius:2px;transition:all 0.3s"></span>
+    <span class="burger-line" style="display:block;width:26px;height:3px;background:var(--text);border-radius:2px;transition:all 0.3s"></span>
+    <span class="burger-line" style="display:block;width:26px;height:3px;background:var(--text);border-radius:2px;transition:all 0.3s"></span>
+  </button>
+
+  <!-- Dropdown menu -->
+  <div id="burger-menu" style="display:none;position:absolute;top:100%;right:0;background:#fff;border:1px solid var(--gray2);border-radius:16px;box-shadow:0 8px 40px rgba(0,0,0,0.12);padding:16px 0;min-width:220px;z-index:1000">
+{menu_items}  </div>
+</nav>
+
+<style>
+  #burger-menu a {{
+    display:block;
+    padding:10px 24px;
+    font-size:15px;
+    font-weight:600;
+    color:var(--text);
+    text-decoration:none;
+    transition:background 0.15s;
+  }}
+  #burger-menu a:hover {{
+    background:var(--gray);
+    color:var(--orange);
+  }}
+</style>
+
+<script>
+  function toggleMenu() {{
+    var m = document.getElementById('burger-menu');
+    m.style.display = m.style.display === 'none' ? 'block' : 'none';
+  }}
+  // Close when clicking outside
+  document.addEventListener('click', function(e) {{
+    var btn = document.getElementById('burger-btn');
+    var menu = document.getElementById('burger-menu');
+    if (!btn.contains(e.target) && !menu.contains(e.target)) {{
+      menu.style.display = 'none';
+    }}
+  }});
+</script>'''
 
 FOOTER = '''<footer>
   <div class="f-logo">GUTU</div>
