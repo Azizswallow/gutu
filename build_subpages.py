@@ -263,24 +263,19 @@ LANDING_CARDS = '''
 </section>
 '''
 
-# Read the original index.html nav
-nav_start = html.index('<nav>')
-nav_end = html.index('</nav>') + len('</nav>')
-nav_block = html[nav_start:nav_end]
-
-# Build clean index.html
+# Build clean index.html using the new burger nav
 new_index = f'''<!DOCTYPE html>
 <html lang="ru">
 {HEAD}
 <body>
-{nav_block}
+{page_nav('Главная')}
 {hero_stats}
 {LANDING_CARDS}
 {FOOTER}
 </body>
 </html>'''
 
-# Update nav links in index to go to sub-pages (not anchors)
+# (no anchor replacements needed — burger nav already uses correct paths)
 new_index = new_index.replace(
     '    <a href="#solution">Решение</a>',
     '    <a href="/solution.html">Решение</a>'
