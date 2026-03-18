@@ -10,8 +10,7 @@
   .gutu-gallery{columns:3;column-gap:16px}
   @media(max-width:900px){.gutu-gallery{columns:2}}
   @media(max-width:560px){.gutu-gallery{columns:1}}
-  .photo-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;align-items:start}
-  @media(max-width:900px){.photo-grid{grid-template-columns:repeat(2,1fr)}}
+  .photo-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;align-items:start}
   @media(max-width:560px){.photo-grid{grid-template-columns:1fr}}
 </style>
 </head>
@@ -190,11 +189,11 @@
   <h2 class="section-title">GUTU в ресторанах.</h2>
   <div class="photo-grid">
     <img src="/g-heinz.jpg" alt="GUTU — Heinz" style="width:100%;height:auto;display:block;border-radius:16px">
-    <img src="/g-menu.jpg" alt="GUTU — Menu" style="width:100%;height:auto;display:block;border-radius:16px">
     <img src="/g-ufc.jpg" alt="GUTU — UFC" style="width:100%;height:auto;display:block;border-radius:16px">
-    <img src="/g-candles.jpg" alt="GUTU — Candles" style="width:100%;height:auto;display:block;border-radius:16px">
     <img src="/g-coors.jpg" alt="GUTU — Coors Light" style="width:100%;height:auto;display:block;border-radius:16px">
     <img src="/g-ford.jpg" alt="GUTU — Ford" style="width:100%;height:auto;display:block;border-radius:16px">
+    <img src="/g-menu.jpg" alt="GUTU — Menu" style="width:100%;height:auto;display:block;border-radius:16px;grid-column:1/-1">
+    <img src="/g-candles.jpg" alt="GUTU — Candles" style="width:100%;height:auto;display:block;border-radius:16px;grid-column:1/-1">
   </div>
 </div>
 </section>
