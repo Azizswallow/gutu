@@ -9,7 +9,6 @@ export default defineConfig({
         product: resolve(__dirname, 'product.html'),
         market: resolve(__dirname, 'market.html'),
         businessModel: resolve(__dirname, 'business-model.html'),
-        traction: resolve(__dirname, 'traction.html'),
         team: resolve(__dirname, 'team.html'),
         roadmap: resolve(__dirname, 'roadmap.html'),
         invest: resolve(__dirname, 'invest.html'),
