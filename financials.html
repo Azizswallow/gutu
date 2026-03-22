@@ -89,6 +89,19 @@
     <a href="/business-plan.html" style="">Бизнес-план</a>
   </div>
 </nav>
+<script>
+  function toggleMenu() {
+    var m = document.getElementById('burger-menu');
+    m.style.display = m.style.display === 'none' ? 'block' : 'none';
+  }
+  document.addEventListener('click', function(e) {
+    var btn = document.getElementById('burger-btn');
+    var menu = document.getElementById('burger-menu');
+    if (!btn.contains(e.target) && !menu.contains(e.target)) {
+      menu.style.display = 'none';
+    }
+  });
+</script>
 
 <!-- HERO -->
 <section class="fin-hero">
