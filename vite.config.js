@@ -13,7 +13,6 @@ export default defineConfig({
         roadmap: resolve(__dirname, 'roadmap.html'),
         invest: resolve(__dirname, 'invest.html'),
         financials: resolve(__dirname, 'financials.html'),
-        businessPlan: resolve(__dirname, 'business-plan.html'),
       }
     }
   }
