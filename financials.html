@@ -84,9 +84,26 @@
     <a href="/business-model.html" style="">Бизнес-модель</a>
     <a href="/team.html" style="">Команда</a>
     <a href="/roadmap.html" style="">Роадмап</a>
-    <a href="/invest.html" style="color:var(--orange);font-weight:700;">Инвестиции</a>
-    <a href="/financials.html" style="">Финмодель</a>  </div>
+    <a href="/invest.html" style="">Инвестиции</a>
+    <a href="/financials.html" style="color:var(--orange);font-weight:700;">Финмодель</a>  </div>
 </nav>
+
+<style>
+  #burger-menu a {
+    display:block;
+    padding:10px 24px;
+    font-size:15px;
+    font-weight:600;
+    color:var(--text);
+    text-decoration:none;
+    transition:background 0.15s;
+  }
+  #burger-menu a:hover {
+    background:var(--gray);
+    color:var(--orange);
+  }
+</style>
+
 <script>
   function toggleMenu() {
     var m = document.getElementById('burger-menu');
