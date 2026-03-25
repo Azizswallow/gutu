@@ -13,6 +13,14 @@ export default defineConfig({
         roadmap: resolve(__dirname, 'roadmap.html'),
         invest: resolve(__dirname, 'invest.html'),
         financials: resolve(__dirname, 'financials.html'),
+        azMain: resolve(__dirname, 'az/index.html'),
+        azProduct: resolve(__dirname, 'az/product.html'),
+        azMarket: resolve(__dirname, 'az/market.html'),
+        azBusinessModel: resolve(__dirname, 'az/business-model.html'),
+        azTeam: resolve(__dirname, 'az/team.html'),
+        azRoadmap: resolve(__dirname, 'az/roadmap.html'),
+        azInvest: resolve(__dirname, 'az/invest.html'),
+        azFinancials: resolve(__dirname, 'az/financials.html'),
       }
     }
   }
