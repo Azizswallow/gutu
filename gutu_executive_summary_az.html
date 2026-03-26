@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="az">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GUTU — Executive Summary</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+  * { margin:0; padding:0; box-sizing:border-box; }
+  @page { size:A4; margin:0; }
+  body { font-family:'Inter',sans-serif; color:#1a1a1a; background:#fff; width:210mm; margin:0 auto; font-size:9.5px; line-height:1.5; }
+
+  .page { padding:28px 32px 24px; min-height:297mm; position:relative; }
+  .page-break { page-break-before:always; }
+
+  /* HEADER */
+  .header { display:flex; justify-content:space-between; align-items:center; margin-bottom:18px; padding-bottom:10px; border-bottom:2.5px solid #e8421a; }
+  .header h1 { font-size:30px; font-weight:900; color:#e8421a; letter-spacing:-1px; }
+  .header .sub { font-size:10px; color:#777; margin-top:1px; }
+  .header-right { text-align:right; font-size:9px; color:#999; line-height:1.4; }
+
+  .st { font-size:11px; font-weight:700; color:#e8421a; margin-bottom:6px; text-transform:uppercase; letter-spacing:0.5px; }
+
+  /* PRODUCT INTRO */
+  .intro-block {
+    background:linear-gradient(135deg,#111,#1e1e1e);
+    color:#fff;
+    padding:16px 20px;
+    border-radius:12px;
+    margin-bottom:16px;
+    font-size:10.5px;
+    line-height:1.6;
+  }
+  .intro-block strong { color:#e8421a; }
+
+  /* FEATURE CARDS WITH DESCRIPTIONS */
+  .feat-section { margin-bottom:14px; }
+  .feat-label { font-size:10px; font-weight:700; color:#e8421a; margin-bottom:6px; }
+  .feat-cards { display:grid; grid-template-columns:repeat(4,1fr); gap:6px; }
+  .fc {
+    background:#f7f7f7;
+    border:1px solid #eaeaea;
+    border-radius:8px;
+    padding:8px 8px 7px;
+    text-align:center;
+  }
+  .fc .icon { font-size:20px; display:block; margin-bottom:3px; }
+  .fc .name { font-size:8.5px; font-weight:700; color:#1a1a1a; display:block; margin-bottom:2px; }
+  .fc .desc { font-size:7px; color:#777; line-height:1.3; display:block; }
+
+  /* PROBLEM CARDS - dark style like screenshot 2 */
+  .problem-section { margin-bottom:16px; }
+  .problem-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:6px; }
+  .pc {
+    background:#111;
+    border-radius:10px;
+    padding:12px 11px;
+    color:#fff;
+  }
+  .pc .val { font-size:17px; font-weight:800; color:#e8421a; display:block; margin-bottom:3px; font-style:italic; }
+  .pc .title { font-size:8.5px; font-weight:700; color:#fff; display:block; margin-bottom:3px; }
+  .pc .txt { font-size:7.5px; color:#999; line-height:1.35; }
+
+  /* SOLUTION CARDS - white style like screenshot 1 */
+  .solution-section { margin-bottom:16px; }
+  .solution-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:6px; }
+  .sc {
+    background:#fff;
+    border:1px solid #e5e5e5;
+    border-radius:10px;
+    padding:12px 11px;
+  }
+  .sc .val { font-size:17px; font-weight:800; color:#16a34a; display:block; margin-bottom:3px; font-style:italic; }
+  .sc .title { font-size:8.5px; font-weight:700; color:#1a1a1a; display:block; margin-bottom:3px; }
+  .sc .txt { font-size:7.5px; color:#777; line-height:1.35; }
+
+  /* MEDIA PLATFORM - dark block like screenshot 3 */
+  .media-section {
+    background:#111;
+    border-radius:12px;
+    padding:18px 20px;
+    margin-bottom:16px;
+    color:#fff;
+  }
+  .media-section .label { font-size:9px; font-weight:600; color:#e8421a; text-transform:uppercase; letter-spacing:1px; margin-bottom:6px; }
+  .media-section h2 { font-size:20px; font-weight:800; color:#fff; line-height:1.25; margin-bottom:6px; }
+  .media-section h2 span { color:#e8421a; }
+  .media-section .subtitle { font-size:10px; color:#aaa; line-height:1.55; margin-bottom:14px; }
+  .media-cards { display:grid; grid-template-columns:1fr 1fr 1fr; gap:8px; }
+  .mc-dark {
+    background:#1a1a1a;
+    border:1px solid #333;
+    border-radius:10px;
+    padding:12px 11px;
+  }
+  .mc-dark.center {
+    background:#e8421a;
+    border-color:#e8421a;
+  }
+  .mc-dark .card-icon { font-size:22px; display:block; margin-bottom:6px; }
+  .mc-dark h4 { font-size:10px; font-weight:700; color:#fff; margin-bottom:4px; }
+  .mc-dark p { font-size:8px; color:#ccc; line-height:1.4; }
+  .mc-dark.center p { color:rgba(255,255,255,0.85); }
+
+  /* BIZ MODEL - two stream cards */
+  .bm-section { margin-bottom:14px; }
+  .bm-header { margin-bottom:8px; }
+  .bm-header h2 { font-size:18px; font-weight:800; color:#1a1a1a; line-height:1.2; }
+  .bm-header p { font-size:9.5px; color:#666; margin-top:3px; }
+  .bm-streams { display:grid; grid-template-columns:1fr 1fr; gap:8px; margin-bottom:10px; }
+  .bm-stream {
+    border:1px solid #e5e5e5;
+    border-radius:10px;
+    padding:12px 13px;
+  }
+  .bm-stream h4 { font-size:10px; font-weight:700; color:#1a1a1a; margin-bottom:4px; }
+  .bm-stream p { font-size:8.5px; color:#555; line-height:1.5; }
+  .bm-stream strong { color:#e8421a; }
+
+  /* METRICS ROW */
+  .metrics-row { display:grid; grid-template-columns:repeat(5,1fr); gap:6px; margin-bottom:14px; }
+  .mr {
+    background:#f7f7f7;
+    border:1px solid #eaeaea;
+    border-radius:8px;
+    padding:10px 6px;
+    text-align:center;
+  }
+  .mr .val { font-size:18px; font-weight:800; color:#e8421a; display:block; }
+  .mr .lbl { font-size:7px; color:#777; margin-top:2px; display:block; line-height:1.2; }
+
+  /* TAM / SAM / SOM */
+  .tam-row { display:grid; grid-template-columns:repeat(3,1fr); gap:8px; margin-bottom:12px; }
+  .tam-c { border-radius:10px; padding:10px 12px; text-align:center; }
+  .tam-c.tam { background:#fee2e2; }
+  .tam-c.sam { background:#fef3c7; }
+  .tam-c.som { background:#d1fae5; }
+  .tam-c .tag { font-size:8px; font-weight:700; text-transform:uppercase; letter-spacing:0.5px; }
+  .tam-c.tam .tag { color:#dc2626; }
+  .tam-c.sam .tag { color:#d97706; }
+  .tam-c.som .tag { color:#059669; }
+  .tam-c .big { font-size:20px; font-weight:900; color:#1a1a1a; display:block; margin:3px 0; }
+  .tam-c .desc { font-size:7.5px; color:#555; line-height:1.3; }
+
+  /* ZERO COMPETITORS */
+  .zero-block {
+    background:linear-gradient(135deg,#111,#1e1e1e);
+    border-radius:10px;
+    padding:14px 18px;
+    margin-bottom:14px;
+    display:flex;
+    align-items:center;
+    gap:16px;
+  }
+  .zero-num { font-size:48px; font-weight:900; color:#e8421a; flex-shrink:0; line-height:1; }
+  .zero-text h4 { color:#fff; font-size:11px; font-weight:700; margin-bottom:3px; }
+  .zero-text p { color:#999; font-size:8.5px; line-height:1.45; }
+  .zero-text strong { color:#e8421a; }
+
+  /* GROWTH LOOP */
+  .loop-container { display:flex; align-items:center; gap:18px; margin-bottom:14px; }
+  .loop-visual { position:relative; width:175px; height:175px; flex-shrink:0; }
+  .loop-svg { position:absolute; top:0; left:0; width:175px; height:175px; }
+  .loop-node { position:absolute; width:70px; text-align:center; font-size:8px; font-weight:600; line-height:1.25; }
+  .loop-node .icon { font-size:20px; display:block; margin-bottom:1px; }
+  .loop-node.n1 { top:-4px; left:50%; transform:translateX(-50%); }
+  .loop-node.n2 { top:50%; right:-12px; transform:translateY(-50%); }
+  .loop-node.n3 { bottom:-4px; left:50%; transform:translateX(-50%); }
+  .loop-node.n4 { top:50%; left:-12px; transform:translateY(-50%); }
+  .loop-center { position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); width:46px; height:46px; background:#e8421a; border-radius:50%; display:flex; align-items:center; justify-content:center; color:#fff; font-size:12px; font-weight:900; }
+  .loop-info { flex:1; }
+  .loop-step { display:flex; align-items:flex-start; gap:7px; margin-bottom:5px; font-size:9px; line-height:1.4; }
+  .loop-step .num { width:20px; height:20px; background:#e8421a; color:#fff; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:9px; font-weight:700; flex-shrink:0; }
+  .loop-step strong { color:#e8421a; }
+  .loop-note { font-size:9px; color:#e8421a; font-weight:700; margin-top:8px; }
+
+  /* TABLE */
+  .tbl { width:100%; border-collapse:collapse; margin-bottom:8px; font-size:9px; }
+  .tbl th { background:#111; color:#fff; padding:6px 8px; text-align:left; font-weight:600; font-size:8.5px; }
+  .tbl td { padding:5px 8px; border-bottom:1px solid #eee; }
+  .tbl tr:nth-child(even) { background:#f9f9f9; }
+  .tbl .hl { background:#fef3f0; font-weight:600; }
+
+  .unit-box { background:#fef3f0; border-left:3px solid #e8421a; padding:8px 14px; border-radius:0 8px 8px 0; margin-bottom:14px; font-size:9px; color:#333; }
+
+  .footer { padding-top:10px; border-top:1px solid #ddd; display:flex; justify-content:space-between; align-items:center; font-size:9px; color:#888; }
+  .footer strong { color:#1a1a1a; }
+  .footer .cta { color:#e8421a; font-weight:700; font-size:10px; }
+</style>
+</head>
+<body>
+
+<!-- =============== PAGE 1 =============== -->
+<div class="page">
+
+<div class="header">
+  <div>
+    <h1>GUTU</h1>
+    <div class="sub">Restoranlar üçün ağıllı masa platforması</div>
+  </div>
+  <div class="header-right">Executive Summary<br>Bakı, Azərbaycan · 2026</div>
+</div>
+
+<!-- INTRO -->
+<div class="intro-block">
+  <strong>GUTU</strong> — restoran, kafe və digər məkanların masalarında yerləşdirilən interaktiv tabletop cihazdır. 
+  Qonaqlara xidmət funksiyalarını və rəqəmsal reklam platformasını vahid interfeysdə birləşdirir. 
+  Eyni zamanda, <strong>media kanalı</strong> kimi fəaliyyət göstərərək qonaq artıq qərarvermə mərhələsində olduğu anda 
+  kontekstual reklam və brend kontenti nümayiş etdirir.
+</div>
+
+<!-- RESTAURANT FEATURES -->
+<div class="feat-section">
+  <div class="feat-label">🍽️ Restoranlar üçün funksionallıq</div>
+  <div class="feat-cards">
+    <div class="fc"><span class="icon">🛎️</span><span class="name">Ofisiant çağırışı</span><span class="desc">Qonaq bir kliklə personalı çağırır, gözləmə azalır</span></div>
+    <div class="fc"><span class="icon">📋</span><span class="name">İnteraktiv menyu</span><span class="desc">Şəkillər, təsvirlər, kampaniyalar və tövsiyələr</span></div>
+    <div class="fc"><span class="icon">💳</span><span class="name">Hesab / QR ödəniş</span><span class="desc">Ödəniş prosesi sürətlənir, ofisiant gözləmədən</span></div>
+    <div class="fc"><span class="icon">🔋</span><span class="name">Simsiz şarj</span><span class="desc">Masada smartfonların birbaşa şarj edilməsi</span></div>
+    <div class="fc"><span class="icon">🎯</span><span class="name">Aksiya və upsell</span><span class="desc">Desertlər, içkilər, kombolar — orta çek artır</span></div>
+    <div class="fc"><span class="icon">⌚</span><span class="name">Smart saat bildirişi</span><span class="desc">Siqnallar planşet və ya saatlara ötürülür</span></div>
+    <div class="fc"><span class="icon">🌍</span><span class="name">Çoxdilli interfeys</span><span class="desc">Turistlər üçün müxtəlif dillərin dəstəyi</span></div>
+    <div class="fc"><span class="icon">📊</span><span class="name">Analitika paneli</span><span class="desc">Populyar yeməklər, pik saatlar, masa aktivliyi</span></div>
+  </div>
+</div>
+
+<!-- ADVERTISER FEATURES -->
+<div class="feat-section" style="margin-bottom:16px">
+  <div class="feat-label">📢 Reklamverənlər üçün funksionallıq</div>
+  <div class="feat-cards">
+    <div class="fc"><span class="icon">📺</span><span class="name">Video / animasiya</span><span class="desc">Tam ekranda yüksək keyfiyyətli reklam çarxları</span></div>
+    <div class="fc"><span class="icon">👆</span><span class="name">İnteraktiv format</span><span class="desc">Düymələr, klik edilən elementlər və keçidlər</span></div>
+    <div class="fc"><span class="icon">📱</span><span class="name">QR kod & aksiya</span><span class="desc">Skan → sayt, endirim və ya tətbiqə keçid</span></div>
+    <div class="fc"><span class="icon">🎁</span><span class="name">Kupon & promo</span><span class="desc">Qonaqlar üçün ani endirim və aksiyalar</span></div>
+    <div class="fc"><span class="icon">🕐</span><span class="name">Kontekst hədəfləmə</span><span class="desc">Vaxt, tədbirlər, məkan tipinə görə göstərim</span></div>
+    <div class="fc"><span class="icon">📍</span><span class="name">Geo-targeting</span><span class="desc">Konkret restoran və lokasiyada yerləşdirmə</span></div>
+    <div class="fc"><span class="icon">🎮</span><span class="name">Oyunlaşdırma</span><span class="desc">Oyunlar, interaktiv bannerlər, cəlbedici kontent</span></div>
+    <div class="fc"><span class="icon">📈</span><span class="name">Analitika & ROI</span><span class="desc">Baxışlar, kliklər, konversiyalar — ölçülə bilən</span></div>
+  </div>
+</div>
+
+<!-- PROBLEM - dark cards -->
+<div class="problem-section">
+  <div class="st">❌ Problem — restoranlar hər gün pul itirir</div>
+  <div class="problem-grid">
+    <div class="pc"><span class="val">−20%</span><span class="title">Təzyiq altında marja</span><span class="txt">Bakıda əməliyyat marjası məhsul, icarə və əmək xərclərinin artması ilə azalır</span></div>
+    <div class="pc"><span class="val">30–60 dəq</span><span class="title">Boşa gedən diqqət</span><span class="txt">Qonaqlar masada oturur — amma brendlər heç kəsin baxmadığı reklam üçün pul ödəyir</span></div>
+    <div class="pc"><span class="val">2 000 AZN</span><span class="title">İllik menyu çap xərcləri</span><span class="txt">Hər yeniləmə — yeni dizayn, çap, paylanma. Vaxt və pul itkisi</span></div>
+    <div class="pc"><span class="val">−15–25%</span><span class="title">Əmək haqqı fonuna yük</span><span class="txt">Personal — əsas aylıq xərcdir və optimallaşdırılması ən çətin maddə</span></div>
+    <div class="pc"><span class="val">−20%</span><span class="title">Yükün azaldılması imkanı</span><span class="txt">Ağıllı cihazlar rutin tapşırıqları aradan qaldıra bilər — lakin yerli həll yoxdur</span></div>
+    <div class="pc"><span class="val">$0 (0 AZN)</span><span class="title">Masada reklam gəliri</span><span class="txt">Restoranlar hər gün təmin etdikləri saatlıq diqqətdən heç nə almır</span></div>
+  </div>
+</div>
+
+<!-- SOLUTION - white cards -->
+<div class="solution-section">
+  <div class="st">✅ Həll — GUTU hər masanı gəlir mənbəyinə çevirir</div>
+  <div class="solution-grid">
+    <div class="sc"><span class="val">+15–25%</span><span class="title">Orta çekin artması</span><span class="txt">Rəqəmsal menyu upsell-lərlə hər ziyarətdə sifariş məbləğini artırır</span></div>
+    <div class="sc"><span class="val">+$300</span><span class="title">Nöqtədən reklam gəliri</span><span class="txt">Hər qoşulmuş restoran aylıq reklam gəliri alır — passiv şəkildə</span></div>
+    <div class="sc"><span class="val">−20%</span><span class="title">Personala yükün azalması</span><span class="txt">Rutin tapşırıqları cihaz götürür — personal xidmətə diqqət yetirir</span></div>
+    <div class="sc"><span class="val">$0</span><span class="title">Menyu çap xərcləri</span><span class="txt">Rəqəmsal menyu saniyələr ərzində yenilənir — dizayner və printer olmadan</span></div>
+    <div class="sc"><span class="val">30–40%</span><span class="title">Dövriyyə sürətlənməsi</span><span class="txt">Müstəqil sifariş və ani ödəniş xidmət vaxtını qısaldır</span></div>
+    <div class="sc"><span class="val">1 cihaz</span><span class="title">Bütün funksiyalar birdə</span><span class="txt">Menyu, sifariş, ödəniş, reklam, aksiya, bəxşiş, şarj — vahid platforma</span></div>
+  </div>
+</div>
+
+</div><!-- end page 1 -->
+
+<!-- =============== PAGE 2 =============== -->
+<div class="page page-break">
+
+<!-- MEDIA PLATFORM - dark block -->
+<div class="media-section">
+  <div class="label">Platforma</div>
+  <h2>GUTU — restoranların içində<br><span>yeni media platforması.</span></h2>
+  <div class="subtitle">Hər masada bir cihaz əməliyyatları, qonaqların diqqətini və məlumatları birləşdirir — oflayn trafiki ölçülə bilən və miqyaslandırıla bilən gəlirə çevirir.</div>
+  <div class="media-cards">
+    <div class="mc-dark">
+      <div class="card-icon">🍽️</div>
+      <h4>Restoranlar</h4>
+      <p>Cihaz başına ayda $29-dan (49 AZN) abunəlik. Rəqəmsal menyu, çekə +15–25% upsell, analitika, ofisiant çağırışı — əlavə personal olmadan.</p>
+    </div>
+    <div class="mc-dark center">
+      <div class="card-icon">📱</div>
+      <h4>GUTU</h4>
+      <p>Tam dövrəli ikitərəfli platforma. Biz quraşdırırıq, xidmət edirik, yeniləyirik. Restoranlar sadəcə dəyişiklik istəyir — biz hər şeyi edirik.</p>
+    </div>
+    <div class="mc-dark">
+      <div class="card-icon">📣</div>
+      <h4>Reklamverənlər</h4>
+      <p>Masada birbaşa kontekst reklamı — lazımi anda. İnteraktiv formatlar, AR/oyun mexanikaları və 60–90 dəqiqə sürüşdürmə olmadan auditoriya.</p>
+    </div>
+  </div>
+</div>
+
+<!-- BUSINESS MODEL -->
+<div class="bm-section">
+  <div class="bm-header">
+    <div class="st">💰 Biznes-model</div>
+    <h2>İki gəlir axını. Bir məhsul.</h2>
+    <p>GUTU — ikitərəfli platformadır. Restoranlar abunəlik ödəyir. Reklamçılar auditoriyaya çıxış üçün ödəyir. Hər iki axın birlikdə miqyaslanır.</p>
+  </div>
+  <div class="bm-streams">
+    <div class="bm-stream">
+      <h4>🍽️ Axın 1 — Restoran abunəlikləri (SaaS)</h4>
+      <p>Standard Ads — <strong>$29/ay</strong> (49 AZN) · Standard No Ads — <strong>$34/ay</strong> (58 AZN) · Premium — <strong>$55/ay</strong> (94 AZN)<br>
+      Orta tarif (miks 40/40/20): <strong>$36.20/cihaz</strong> (62 AZN)<br>
+      12 cihaz × $36.20 = <strong>$434/restoran/ay</strong> (738 AZN)</p>
+    </div>
+    <div class="bm-stream">
+      <h4>📣 Axın 2 — Reklam gəliri</h4>
+      <p>Brendlər masada ekranlarda reklam üçün ödəyir.<br>
+      Restoran başına ort. <strong>$300/ay</strong> (510 AZN)<br>
+      Hədəf: banklar, telekom, FMCG, Azerlotereya, taksi<br>
+      Hədəfləmə: restoran növü, rayon, günün vaxtı, orta çek</p>
+    </div>
+  </div>
+</div>
+
+<!-- KEY METRICS -->
+<div class="metrics-row">
+  <div class="mr"><span class="val">$734</span><span class="lbl">Gəlir / restoran / ay<br>(1 248 AZN)</span></div>
+  <div class="mr"><span class="val">~45%</span><span class="lbl">Əməliyyat marjası<br>(12-ci ay)</span></div>
+  <div class="mr"><span class="val">$1.32M</span><span class="lbl">ARR<br>150 restoranda</span></div>
+  <div class="mr"><span class="val">64×</span><span class="lbl">LTV : CAC<br>nisbəti</span></div>
+  <div class="mr"><span class="val">$120</span><span class="lbl">CAC — 1 restoranın<br>cəlb dəyəri</span></div>
+</div>
+
+<!-- TAM / SAM / SOM -->
+<div class="st">🎯 Bazar həcmi</div>
+<div class="tam-row">
+  <div class="tam-c tam"><div class="tag">TAM — Ümumi bazar</div><span class="big">11 000+</span><div class="desc">Bakıdakı bütün iaşə müəssisələri<br>840 000 oturma yeri · 1.9 mlrd AZN</div></div>
+  <div class="tam-c sam"><div class="tag">SAM — Əlçatan bazar</div><span class="big">3 200+</span><div class="desc">Oturma yerli restoranlar, kafelər, barlar<br>Bizim hədəf seqment</div></div>
+  <div class="tam-c som"><div class="tag">SOM — Hədəf (1–3 il)</div><span class="big">50–300</span><div class="desc">Konservativ → Optimist ssenari<br>600 – 3 600 cihaz</div></div>
+</div>
+
+<!-- ZERO COMPETITORS -->
+<div class="zero-block">
+  <div class="zero-num">0</div>
+  <div class="zero-text">
+    <h4>Azərbaycanda birbaşa rəqib — SIFIR</h4>
+    <p>Reklam funksionallığı olan ağıllı masalar təqdim edən <strong>bir şirkət belə yoxdur</strong>. 
+    GUTU kateqoriyanı sıfırdan yaradır — ilk addım atanın üstünlüyü ilə əsas restoranları tutur, vərdiş formalaşdırır və brendi standart kimi möhkəmləndiriri.</p>
+  </div>
+</div>
+
+<!-- GROWTH LOOP -->
+<div class="st">🔄 Growth Loop — özünü gücləndiən artım modeli</div>
+<div class="loop-container">
+  <div class="loop-visual">
+    <svg class="loop-svg" viewBox="0 0 175 175">
+      <defs><marker id="arr" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#e8421a"/></marker></defs>
+      <path d="M 105,22 Q 152,32 154,78" fill="none" stroke="#e8421a" stroke-width="2" stroke-dasharray="4,3" marker-end="url(#arr)"/>
+      <path d="M 154,100 Q 152,148 105,156" fill="none" stroke="#e8421a" stroke-width="2" stroke-dasharray="4,3" marker-end="url(#arr)"/>
+      <path d="M 70,156 Q 22,148 20,100" fill="none" stroke="#e8421a" stroke-width="2" stroke-dasharray="4,3" marker-end="url(#arr)"/>
+      <path d="M 20,78 Q 22,32 70,22" fill="none" stroke="#e8421a" stroke-width="2" stroke-dasharray="4,3" marker-end="url(#arr)"/>
+    </svg>
+    <div class="loop-node n1"><span class="icon">🍽️</span><span>Restoranlar</span></div>
+    <div class="loop-node n2"><span class="icon">👥</span><span>Auditoriya</span></div>
+    <div class="loop-node n3"><span class="icon">📈</span><span>Reklamçılar</span></div>
+    <div class="loop-node n4"><span class="icon">💰</span><span>Gəlir</span></div>
+    <div class="loop-center">GUTU</div>
+  </div>
+  <div class="loop-info">
+    <div class="loop-step"><div class="num">1</div><div class="desc"><strong>Restoranlar</strong> platformaya qoşulur → cihazlar quraşdırılır, auditoriya formalaşır</div></div>
+    <div class="loop-step"><div class="num">2</div><div class="desc"><strong>Auditoriya</strong> artır → gündə 150–300 qonaq, 60–90 dəq. masada diqqət</div></div>
+    <div class="loop-step"><div class="num">3</div><div class="desc"><strong>Reklamçılar</strong> gəlir → yüksək CTR və uzun təmas müddəti brendləri cəlb edir</div></div>
+    <div class="loop-step"><div class="num">4</div><div class="desc"><strong>Gəlir</strong> artır → əməliyyat mənfəəti yeni restoranları maliyyələşdirir</div></div>
+    <div class="loop-note">🔁 Dövr təkrarlanır və sürətlənir. 50 restorandan sonra — tam özünümaliyyələşdirmə, aylıq 5+ yeni restoran yalnız mənfəətdən.</div>
+  </div>
+</div>
+
+<!-- SCENARIOS -->
+<div class="st">📊 Artım ssenariləri</div>
+<table class="tbl">
+  <tr><th>Ssenari</th><th>Restoranlar</th><th>Aylıq gəlir</th><th>Aylıq mənfəət</th><th>Marja</th><th>ARR</th></tr>
+  <tr><td>Konservativ</td><td>50</td><td>$36 720</td><td>$17 472</td><td>47.6%</td><td>$440K</td></tr>
+  <tr class="hl"><td>⭐ Baza</td><td>150</td><td>$110 160</td><td>$67 416</td><td>61.2%</td><td>$1.32M</td></tr>
+  <tr><td>Optimist</td><td>300</td><td>$220 320</td><td>$142 332</td><td>64.6%</td><td>$2.64M</td></tr>
+</table>
+
+<div class="unit-box">
+  <strong>Vahid iqtisadiyyat:</strong> LTV <strong>$7 746</strong> · CAC <strong>$120</strong> · Nisbət <strong>64×</strong> · Gəlirsizlik nöqtəsi: cəmi <strong>16 restoran</strong> · Avadanlıq özünüödəməsi: <strong>4–5 ay</strong>
+</div>
+
+<div class="footer">
+  <div>
+    <strong>Aziz Haziyev</strong> · CEO · azizbot1998@gmail.com<br>
+    🌐 gutu-nu.vercel.app
+  </div>
+  <div style="text-align:right">
+    Ətraflı təqdimat, maliyyə modeli və canlı demo<br>
+    <span class="cta">görüş zamanı təqdim olunur →</span>
+  </div>
+</div>
+
+</div><!-- end page 2 -->
+
+</body>
+</html>
