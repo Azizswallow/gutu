@@ -236,7 +236,7 @@ section{padding:80px 60px}
 .investor-inner .section-tag{color:var(--orange)}
 .investor-inner .section-title{color:#fff}
 .investor-inner .section-sub{color:#888}
-.invest-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;margin-top:48px}
+.invest-grid{display:grid;grid-template-columns:1fr;gap:40px;margin-top:48px;max-width:700px;margin-left:auto;margin-right:auto}
 .invest-card{background:#111;border:1px solid #222;border-radius:20px;padding:36px}
 .invest-card h3{font-size:24px;font-weight:800;color:#fff;margin-bottom:8px;letter-spacing:-0.5px}
 .invest-card .ic-sub{font-size:14px;color:#888;margin-bottom:28px}
